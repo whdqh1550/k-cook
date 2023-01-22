@@ -1,0 +1,94 @@
+body {
+  margin: 0;
+  background-color: white;
+}
+
+header div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  margin: 0;
+}
+
+#logo {
+  font-family: "Open Sans", sans-serif;
+  font-family: "Unbounded", cursive;
+  font-size: 2rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: blue;
+  margin: 1rem;
+}
+#logor {
+  color: red;
+}
+#menus {
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+.menu-items {
+  font-family: "Open Sans", sans-serif;
+  font-family: "Unbounded", cursive;
+  margin: 1rem;
+}
+.menu-items a {
+  text-decoration: none;
+  color: white;
+}
+.menu-button {
+  width: 3rem;
+  height: 3rem;
+  flex-direction: column;
+  justify-content: space-around;
+  display: none;
+  margin: 0.5rem;
+}
+.menu-button span {
+  width: 100%;
+  height: 3px;
+  background-color: white;
+}
+#side-drawer {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+}
+#side-drawer:target {
+  display: block;
+}
+#side-drawer header {
+  height: 5rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+#side-drawer ul {
+  list-style: none;
+  margin: 0;
+
+  padding: 4rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#side-drawer nav span {
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 80%;
+  height: 3px;
+}
+
+@media (max-width: 48rem) {
+  .menu-button {
+    display: flex;
+  }
+  #main-header nav {
+    display: none;
+  }
+}
