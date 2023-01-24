@@ -1,6 +1,8 @@
 body {
   margin: 0;
   background-color: white;
+  font-family: "Open Sans", sans-serif;
+  font-family: "Unbounded", cursive;
 }
 
 header div {
