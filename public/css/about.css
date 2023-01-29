@@ -1,6 +1,7 @@
 body {
   font-family: "Open Sans", sans-serif;
   font-family: "Unbounded", cursive;
+  background-color: black;
 }
 
 main section {
@@ -13,7 +14,11 @@ main section {
   background-color: white;
   margin-top: 3rem;
   width: 70%;
+  min-height: 30rem;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 #logor {
   color: red;

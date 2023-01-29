@@ -16,7 +16,7 @@ header div {
 #logo {
   font-family: "Open Sans", sans-serif;
   font-family: "Unbounded", cursive;
-  font-size: 2rem;
+  font-size: 4rem;
   font-weight: 700;
   text-decoration: none;
   color: blue;
@@ -34,6 +34,7 @@ header div {
   font-family: "Open Sans", sans-serif;
   font-family: "Unbounded", cursive;
   margin: 1rem;
+  font-size: 1.2rem;
 }
 .menu-items a {
   text-decoration: none;
@@ -94,7 +95,11 @@ header div {
   #main-header nav {
     display: none;
   }
+  #logo {
+    font-size: 2rem;
+  }
 }
+
 footer {
   display: flex;
   justify-content: center;
