@@ -1,27 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include("includes/head") %>
+
+<head>
+  <%- include("includes/head") %>
     <title>K-cook | LogIn</title>
     <link rel="stylesheet" href="css/login.css" />
-  </head>
-  <body>
-    <%- include("includes/header") %>
+</head>
+
+<body>
+  <%- include("includes/header") %>
     <main>
       <section>
         <div id="container">
           <h2 id="header">
             <span id="logor">K-</span><span id="logob">cook</span>
           </h2>
-          <form action="">
-            <input type="text" placeholder="ID" />
-            <input type="password" placeholder="password" />
-            <button class="btn">Log In</button>
-            <a href="#" class="btn">Sign Up</a>
-          </form>
+          <% if(inputData.hasError){ %>
+            <p id="error-message">
+              <%= inputData.message %>
+            </p>
+            <% } %>
+              <form action="/logIn" method="POST">
+                <label for="userName">User Name</label>
+                <input type="text" placeholder="User Name" id="userName" name="userName"
+                  value="<%= inputData.username  %>" />
+                <label for="password">Password</label>
+                <input type="password" placeholder="Password" id="password" name="password" />
+                <button class="btn">Log In</button>
+                <a href="/signUp" class="btn">Sign Up</a>
+              </form>
         </div>
       </section>
     </main>
     <footer><%- include("includes/footer") %></footer>
-  </body>
+</body>
+
 </html>

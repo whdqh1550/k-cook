@@ -33,7 +33,7 @@ body {
   margin: 0.5rem 0;
   padding: 0.5rem;
   border: none;
-  background-color: black;
+  background-color: rgb(200, 200, 200);
   color: white;
   font-size: 1.5rem;
   border-radius: 10px;
@@ -59,4 +59,9 @@ body {
 #container button:hover,
 .btn:hover {
   background-color: rgb(114, 114, 114);
+}
+#error-message {
+  background-color: rgb(255, 149, 149);
+  padding: 0.3rem 1rem;
+  border-radius: 5px;
 }

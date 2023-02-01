@@ -1,8 +1,6 @@
 <header id="main-header">
   <div>
-    <a href="/" id="logo"
-      ><span id="logor">K-</span><span id="logob">cook</span></a
-    >
+    <a href="/" id="logo"><span id="logor">K-</span><span id="logob">cook</span></a>
     <nav>
       <ul id="menus">
         <li class="menu-items">
@@ -12,11 +10,33 @@
           <a href="/contact">Contact </a>
         </li>
         <li class="menu-items">
-          <a href="/logIn">LogIn</a>
-        </li>
-        <li class="menu-items">
           <a href="/search">Serach</a>
         </li>
+        <% if (!locals.loggedIn){ %>
+          <li class="menu-items">
+            <a href="/signUp">Sign Up</a>
+          </li>
+          <li class="menu-items">
+            <a href="/logIn">LogIn</a>
+          </li>
+          <% } %>
+            <% if (locals.loggedIn){ %>
+              <li class="menu-items">
+                <a href="#">Profile</a>
+              </li>
+              <li class="menu-items">
+                <form action="/logout" method="POST">
+                  <button id="logout">LogOut</button>
+                </form>
+              </li>
+              <% } %>
+                <% if(locals.isAdmin) { %>
+                  <li class="menu-items">
+                    <a href="/search">Upload</a>
+                  </li>
+                  <% } %>
+
+
       </ul>
     </nav>
     <a href="#side-drawer" onclick="toggling()" class="menu-button">
@@ -44,14 +64,27 @@
         <a href="/contact">Contact </a>
       </li>
       <span></span>
-      <li class="menu-items">
-        <a href="/logIn">LogIn</a>
-      </li>
-      <span></span>
-      <li class="menu-items">
-        <a href="#">Serach</a>
-      </li>
-      <span></span>
+      <% if(!locals.loggedIn){ %>
+        <li class="menu-items">
+          <a href="/logIn">LogIn</a>
+        </li>
+        <% } %>
+          <% if(locals.loggedIn){ %>
+            <li class="menu-items">
+              <a href="#">Profile</a>
+            </li>
+            <span></span>
+            <li class="menu-items">
+              <form action="/logout" method="POST">
+                <button id="logout">LogOut</button>
+              </form>
+            </li>
+            <% } %>
+              <span></span>
+              <li class="menu-items">
+                <a href="#">Serach</a>
+              </li>
+              <span></span>
     </ul>
   </nav>
 </aside>

@@ -36,6 +36,13 @@ header div {
   margin: 1rem;
   font-size: 1.2rem;
 }
+#logout {
+  font-family: inherit;
+  font-size: 1.2rem;
+  background-color: black;
+  color: white;
+  border: none;
+}
 .menu-items a {
   text-decoration: none;
   color: white;
