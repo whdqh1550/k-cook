@@ -1,9 +1,18 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
+const multer = require("multer");
 const db = require("../database/database");
-const { renderFile } = require("ejs");
-const { ExplainVerbosity } = require("mongodb");
 
+const storageConfig = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "images");
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + "-" + file.originalname);
+  },
+});
+
+const upload = multer({ storage: storageConfig });
 const router = express.Router();
 
 router.get("/", function (req, res) {
@@ -115,7 +124,7 @@ router.post("/logIn", async function (req, res) {
   if (!passwordEqual) {
     req.session.inputError = {
       hasError: true,
-      message: "testing",
+      message: "Invalid Data",
       username: enteredUserName,
     };
     req.session.save(function () {
@@ -146,6 +155,40 @@ router.post("/logout", function (req, res) {
   req.session.destroy(function () {
     res.redirect("/");
   });
+});
+router.get("/upload", function (req, res) {
+  if (!res.locals.isAdmin) {
+    return res.status(401).redirect("/");
+  }
+
+  res.render("upload");
+});
+router.post("/upload", function (req, res) {
+  const steps = req.body.steps;
+  res.render("uploadrecipe", { steps: steps });
+});
+
+router.post("/recipeUpload", upload.array("image"), async function (req, res) {
+  const uploadFiles = req.files;
+  const userData = req.body;
+  const title = userData.title;
+  const thumbnail = uploadFiles[0];
+  const category = userData.category;
+  const step = userData.step;
+  let imgPath = [];
+
+  for (let i = 1; i < uploadFiles.length; i++) {
+    imgPath.push(uploadFiles[i].path);
+  }
+
+  await db.getDB().collection("recipe").insertOne({
+    title: title,
+    thumbnail: thumbnail,
+    category: category,
+    step: step,
+    imgPath: imgPath,
+  });
+  res.redirect("/");
 });
 
 module.exports = router;

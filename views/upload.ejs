@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("includes/head") %>
+        <title>k-cook | upload</title>
+</head>
+
+<body>
+    <%- include("includes/header") %>
+        <main>
+            <form action="/upload" method="POST">
+                <label for="quantity">How many steps?</label>
+                <input type="number" id="quantity" name="steps">
+                <button>submit</button>
+            </form>
+        </main>
+        <footer><%- include("includes/footer") %> </footer>
+
+
+</body>
+
+</html>

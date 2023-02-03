@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("includes/head") %>
+        <title>k-cook | Jjigae</title>
+        <link rel="stylesheet" href="css/menus.css">
+</head>
+
+<body>
+    <%- include("includes/header") %>
+        <main>
+            <h1>Jjigae</h1>
+
+            <section id="container">
+                <ul>
+                    <% for (jjigae of jjigaes ){ %>
+                        <%- include("includes/card",{item:jjigae}) %>
+                            <% } %>
+                </ul>
+            </section>
+
+        </main>
+        <footer><%- include("includes/footer") %> </footer>
+</body>
+
+</html>

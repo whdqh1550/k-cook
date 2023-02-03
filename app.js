@@ -8,6 +8,7 @@ const db = require("./database/database");
 const MongoDBStore = mongodbStore(session);
 
 const defaultRouter = require("./routes/default");
+const menuRouter = require("./routes/menu");
 
 const app = express();
 
@@ -18,6 +19,8 @@ const sessionStore = new MongoDBStore({
 });
 
 app.use(express.static("public"));
+app.use("/images", express.static("images"));
+
 app.use(express.urlencoded({ extended: false }));
 
 app.set("views", path.join(__dirname, "views"));
@@ -38,8 +41,6 @@ app.use(
 app.use(async function (req, res, next) {
   const user = req.session.user;
   const loggedIn = req.session.loggedIn;
-  console.log(user);
-  console.log(loggedIn);
   if (!loggedIn || !user) {
     return next();
   }
@@ -53,6 +54,7 @@ app.use(async function (req, res, next) {
 });
 
 app.use("/", defaultRouter);
+app.use("/", menuRouter);
 
 app.use(function (req, res) {
   res.status(404).render("404");

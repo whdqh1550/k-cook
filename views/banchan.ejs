@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("includes/head") %>
+        <title>k-cook | Banchan</title>
+        <link rel="stylesheet" href="css/menus.css">
+</head>
+
+<body>
+    <%- include("includes/header") %>
+        <main>
+            <h1>Banchan</h1>
+
+            <section id="container">
+                <ul>
+                    <% for (banchan of banchans ){ %>
+                        <%- include("includes/card",{item:banchan, uri:"/banchan"}) %>
+                            <% } %>
+                </ul>
+            </section>
+
+        </main>
+        <footer><%- include("includes/footer") %> </footer>
+</body>
+
+</html>

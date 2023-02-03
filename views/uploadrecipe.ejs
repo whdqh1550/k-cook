@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("includes/head") %>
+        <title>Document</title>
+        <link rel="stylesheet" href="css/upload.css">
+</head>
+
+<body>
+
+    <%- include("includes/header") %>
+        <main>
+            <h1>Upload Recipe</h1>
+            <section id="container">
+                <form action="/recipeUpload" method="POST" enctype="multipart/form-data">
+                    <input type="text" placeholder="title" name="title" id="title" accept=".jpeg,.jpg,.png"
+                        class="upload-item">
+                    <label for="">Put thumnail image</label>
+                    <input type="file" id="image" name="image" class="upload-item">
+                    <label for="category">Which category it falls into?</label>
+                    <select name="category" id="category" class="upload-item">
+                        <option value="Banchan">Banchan</option>
+                        <option value="Jjigae">Jjigae</option>
+                        <option value="Ramyun">Ramyun</option>
+                        <option value="Gogi">Gogi</option>
+                        <option value="Bob">Bob</option>
+                        <option value="Snack">Snack</option>
+                    </select>
+                    <label for="ingredient" class="upload-item">List the ingredient</label>
+                    <textarea name="ingredient" id="ingredient" cols="30" rows="10" class="upload-item"></textarea>
+
+                    <% for (let i=0; i < steps ; i ++){ %>
+                        <%- include("includes/step") %>
+                            <% } %>
+                                <button class="upload-item">Submit</button>
+                </form>
+            </section>
+        </main>
+        <footer><%- include("includes/footer") %> </footer>
+
+</body>
+
+</html>

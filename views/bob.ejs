@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("includes/head") %>
+        <title>k-cook | Bob</title>
+        <link rel="stylesheet" href="css/menus.css">
+</head>
+
+<body>
+    <%- include("includes/header") %>
+        <main>
+            <h1>Bob</h1>
+
+            <section id="container">
+                <ul>
+                    <% for (bob of bobs ){ %>
+                        <%- include("includes/card",{item:bob}) %>
+                            <% } %>
+                </ul>
+            </section>
+
+        </main>
+        <footer><%- include("includes/footer") %> </footer>
+</body>
+
+</html>
