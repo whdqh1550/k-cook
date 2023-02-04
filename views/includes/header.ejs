@@ -12,29 +12,20 @@
         <li class="menu-items">
           <a href="/search">Serach</a>
         </li>
-        <% if (!locals.loggedIn){ %>
+
+        <% if (locals.loggedIn){ %>
+
           <li class="menu-items">
-            <a href="/signUp">Sign Up</a>
-          </li>
-          <li class="menu-items">
-            <a href="/logIn">LogIn</a>
+            <form action="/logout" method="POST">
+              <button id="logout">LogOut</button>
+            </form>
           </li>
           <% } %>
-            <% if (locals.loggedIn){ %>
+            <% if(locals.isAdmin) { %>
               <li class="menu-items">
-                <a href="#">Profile</a>
-              </li>
-              <li class="menu-items">
-                <form action="/logout" method="POST">
-                  <button id="logout">LogOut</button>
-                </form>
+                <a href="/upload">Upload</a>
               </li>
               <% } %>
-                <% if(locals.isAdmin) { %>
-                  <li class="menu-items">
-                    <a href="/upload">Upload</a>
-                  </li>
-                  <% } %>
 
 
       </ul>
@@ -64,27 +55,12 @@
         <a href="/contact">Contact </a>
       </li>
       <span></span>
-      <% if(!locals.loggedIn){ %>
-        <li class="menu-items">
-          <a href="/logIn">LogIn</a>
-        </li>
-        <% } %>
-          <% if(locals.loggedIn){ %>
-            <li class="menu-items">
-              <a href="#">Profile</a>
-            </li>
-            <span></span>
-            <li class="menu-items">
-              <form action="/logout" method="POST">
-                <button id="logout">LogOut</button>
-              </form>
-            </li>
-            <% } %>
-              <span></span>
-              <li class="menu-items">
-                <a href="#">Serach</a>
-              </li>
-              <span></span>
+
+
+      <li class="menu-items">
+        <a href="/search">Serach</a>
+      </li>
+      <span></span>
     </ul>
   </nav>
 </aside>

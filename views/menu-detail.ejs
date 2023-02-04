@@ -2,16 +2,48 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <%- include("includes/head") %>
+        <title>k-cook | <%= menu.title %>
+        </title>
+        <link rel="stylesheet" href="/css/step-detail.css" />
 </head>
 
 <body>
-    <h1>
-        <%= menu.title %>
-    </h1>
+    <%- include("includes/header") %>
+        <main>
+            <section id="container">
+                <h1 id="title">
+                    <%= menu.title %>
+                </h1>
+                <h2>Ingredient</h2>
+                <p id="ingredient">
+                    <span>
+                        <%= menu.ingredient %>
+                    </span>
+                </p>
+                <% for(let i=0; i < menu.imgPath.length;i++){ %> <%-
+                        include("includes/step-show",{description:menu.step[i],gif:menu.imgPath[i]}) %>
+                        <% } %>
+
+                            <a href="<%= menu.referenc %>" id="referred"> Referred Recipe(Goes to top if none) </a>
+
+                            <h5>Donation is always appreciated, Enjoy the meal!</h5>
+                            <form action="https://www.paypal.com/donate" method="post" target="_top">
+                                <input type="hidden" name="business" value="7SQ8BK2YSNTGJ" />
+                                <input type="hidden" name="no_recurring" value="0" />
+                                <input type="hidden" name="item_name" value="Thank you so much for the support" />
+                                <input type="hidden" name="currency_code" value="USD" />
+                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
+                                    border="0" name="submit" title="PayPal - The safer, easier way to pay online!"
+                                    alt="Donate with PayPal button" />
+                                <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1"
+                                    height="1" />
+                            </form>
+            </section>
+
+
+        </main>
+        <footer><%- include("includes/footer") %></footer>
 </body>
 
 </html>

@@ -145,8 +145,25 @@ router.get("/contact", function (req, res) {
   res.render("contact");
 });
 
-router.get("/search", function (req, res) {
-  res.render("search");
+router.get("/search", async function (req, res) {
+  const { keyword } = req.query;
+  console.log(keyword);
+  let recipe = [];
+  if (keyword) {
+    recipe = await db
+      .getDB()
+      .collection("recipe")
+      .find({
+        title: {
+          $regex: new RegExp(keyword, "i"),
+        },
+      })
+      .toArray();
+  }
+  console.log(keyword);
+  console.log(recipe);
+
+  res.render("search", { recipes: recipe });
 });
 
 router.post("/logout", function (req, res) {
@@ -174,6 +191,8 @@ router.post("/recipeUpload", upload.array("image"), async function (req, res) {
   const title = userData.title;
   const thumbnail = uploadFiles[0];
   const category = userData.category;
+  const ingredient = userData.ingredient;
+  const reference = userData.reference;
   const step = userData.step;
   let imgPath = [];
 
@@ -185,6 +204,8 @@ router.post("/recipeUpload", upload.array("image"), async function (req, res) {
     title: title,
     thumbnail: thumbnail,
     category: category,
+    ingredient: ingredient,
+    reference: reference,
     step: step,
     imgPath: imgPath,
   });

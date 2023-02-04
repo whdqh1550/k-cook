@@ -1,0 +1,57 @@
+body {
+  background-color: black;
+}
+
+#container {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  margin: 8rem auto;
+  text-align: center;
+  border-radius: 10px;
+  white-space: pre-line;
+  padding-bottom: 1rem;
+  box-shadow: 3px 3px 8px blue, -3px -3px 8px red;
+}
+#container h2 {
+  margin-bottom: 0;
+}
+#title {
+  font-size: 3rem;
+}
+#ingredient {
+  margin: 0;
+}
+
+#ingredient span {
+  white-space: pre-line;
+}
+.descriptions {
+  font-size: 1.5rem;
+}
+.gifs {
+  height: 30rem;
+  width: 30rem;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 3px 3px 8px blue, -3px -3px 8px red;
+}
+#referred {
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+@media (max-width: 48rem) {
+  .gifs {
+    height: 17rem;
+    width: 90%;
+  }
+  #title {
+    font-size: 2rem;
+  }
+  .descriptions {
+    font-size: 1rem;
+  }
+}

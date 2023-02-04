@@ -36,18 +36,79 @@ router.get("/snack", async function (req, res) {
   res.render("snack", { snacks: snack });
 });
 
+function findMenu(menus, menuName) {
+  for (const menu of menus) {
+    if (menu.title === menuName) {
+      return menu;
+    }
+  }
+  return null;
+}
+
 router.get("/banchan/:name", async function (req, res) {
-  console.log(req.params.name);
   const menuName = req.params.name; //id can be varied depends on url variable(:id) if it is :rid it should be paras.rid
 
   const menus = await dataRetrive("Banchan");
-  console.log(menus);
 
-  for (const menu of menus) {
-    if (menu.title === menuName) {
-      return res.render("menu-detail", { menu: menu });
-    }
+  const menu = findMenu(menus, menuName);
+  if (menu === null) {
+    return res.status(404).render("404");
   }
-  return res.status(404).render("404");
+  return res.render("menu-detail", { menu: menu });
+});
+router.get("/jjigae/:name", async function (req, res) {
+  const menuName = req.params.name; //id can be varied depends on url variable(:id) if it is :rid it should be paras.rid
+
+  const menus = await dataRetrive("Jjigae");
+
+  const menu = findMenu(menus, menuName);
+  if (menu === null) {
+    return res.status(404).render("404");
+  }
+  return res.render("menu-detail", { menu: menu });
+});
+router.get("/ramyun/:name", async function (req, res) {
+  const menuName = req.params.name; //id can be varied depends on url variable(:id) if it is :rid it should be paras.rid
+
+  const menus = await dataRetrive("Ramyun");
+
+  const menu = findMenu(menus, menuName);
+  if (menu === null) {
+    return res.status(404).render("404");
+  }
+  return res.render("menu-detail", { menu: menu });
+});
+router.get("/gogi/:name", async function (req, res) {
+  const menuName = req.params.name; //id can be varied depends on url variable(:id) if it is :rid it should be paras.rid
+
+  const menus = await dataRetrive("Gogi");
+
+  const menu = findMenu(menus, menuName);
+  if (menu === null) {
+    return res.status(404).render("404");
+  }
+  return res.render("menu-detail", { menu: menu });
+});
+router.get("/bob/:name", async function (req, res) {
+  const menuName = req.params.name; //id can be varied depends on url variable(:id) if it is :rid it should be paras.rid
+
+  const menus = await dataRetrive("Bob");
+
+  const menu = findMenu(menus, menuName);
+  if (menu === null) {
+    return res.status(404).render("404");
+  }
+  return res.render("menu-detail", { menu: menu });
+});
+router.get("/snack/:name", async function (req, res) {
+  const menuName = req.params.name; //id can be varied depends on url variable(:id) if it is :rid it should be paras.rid
+
+  const menus = await dataRetrive("Snack");
+
+  const menu = findMenu(menus, menuName);
+  if (menu === null) {
+    return res.status(404).render("404");
+  }
+  return res.render("menu-detail", { menu: menu });
 });
 module.exports = router;

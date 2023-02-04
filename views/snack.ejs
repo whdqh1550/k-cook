@@ -15,7 +15,7 @@
             <section id="container">
                 <ul>
                     <% for (snack of snacks ){ %>
-                        <%- include("includes/card",{item:snacks}) %>
+                        <%- include("includes/card",{item:snack, uri:"/snack"}) %>
                             <% } %>
                 </ul>
             </section>

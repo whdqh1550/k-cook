@@ -1,0 +1,34 @@
+#search {
+  margin: 2rem auto;
+}
+#search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+input {
+  width: 50%;
+  height: 3rem;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 3px 3px 8px blue, -3px -3px 8px red;
+  padding: 0.2rem;
+  font-size: 1.5rem;
+  margin: 1rem 2rem;
+}
+#search-form button {
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 3px 3px 8px blue, -3px -3px 8px red;
+  background-color: black;
+}
+#search-form button i {
+  color: white;
+  font-size: 1.2rem;
+}
+#nores {
+  color: black;
+  padding: 1rem;
+}

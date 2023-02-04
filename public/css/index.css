@@ -10,6 +10,7 @@ body {
 
   margin: 5rem auto;
   border-radius: 8px;
+  box-shadow: 3px 3px 8px blue, -3px -3px 8px red;
 }
 #grid-container ul {
   list-style: none;

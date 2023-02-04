@@ -19,6 +19,7 @@ main section {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  box-shadow: 3px 3px 8px blue, -3px -3px 8px red;
 }
 #logor {
   color: red;
