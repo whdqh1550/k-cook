@@ -4,6 +4,13 @@ body {
   font-family: "Unbounded", cursive;
 }
 
+#greet {
+  margin-top: 3rem;
+  text-align: center;
+  color: white;
+  font-weight: 700;
+}
+
 #grid-container {
   background-color: white;
   width: fit-content;

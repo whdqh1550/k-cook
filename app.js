@@ -9,7 +9,7 @@ const MongoDBStore = mongodbStore(session);
 
 const defaultRouter = require("./routes/default");
 const menuRouter = require("./routes/menu");
-
+console.log(__dirname);
 let PORT = 3000;
 
 const app = express();
