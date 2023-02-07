@@ -147,7 +147,6 @@ router.get("/contact", function (req, res) {
 
 router.get("/search", async function (req, res) {
   const { keyword } = req.query;
-  console.log(keyword);
   let recipe = [];
   if (keyword) {
     recipe = await db
@@ -160,8 +159,6 @@ router.get("/search", async function (req, res) {
       })
       .toArray();
   }
-  console.log(keyword);
-  console.log(recipe);
 
   res.render("search", { recipes: recipe });
 });
