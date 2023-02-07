@@ -9,12 +9,11 @@ const MongoDBStore = mongodbStore(session);
 
 const defaultRouter = require("./routes/default");
 const menuRouter = require("./routes/menu");
-console.log(__dirname);
 
 const app = express();
 
 const sessionStore = new MongoDBStore({
-  uri: "mongodb://127.0.0.1:27017",
+  uri: "mongodb+srv://chungpodo:C5UOdgTJJejarxi8@cluster0.8eqm44w.mongodb.net/?retryWrites=true&w=majority",
   databaseName: "kCook",
   collection: "sessions",
 });

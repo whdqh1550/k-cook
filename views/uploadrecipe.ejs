@@ -29,7 +29,8 @@
                     </select>
                     <label for="ingredient" class="upload-item">List the ingredient</label>
                     <textarea name="ingredient" id="ingredient" cols="30" rows="10" class="upload-item"></textarea>
-
+                    <label for="">Put Ingredient picture</label>
+                    <input type="file" id="image" name="image" class="upload-item">
                     <% for (let i=0; i < steps ; i ++){ %>
                         <%- include("includes/step") %>
                             <% } %>

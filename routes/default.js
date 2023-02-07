@@ -190,19 +190,21 @@ router.post("/recipeUpload", upload.array("image"), async function (req, res) {
   const userData = req.body;
   const title = userData.title;
   const thumbnail = uploadFiles[0];
+  const ingredientPicture = uploadFiles[1];
   const category = userData.category;
   const ingredient = userData.ingredient;
   const reference = userData.reference;
   const step = userData.step;
   let imgPath = [];
 
-  for (let i = 1; i < uploadFiles.length; i++) {
+  for (let i = 2; i < uploadFiles.length; i++) {
     imgPath.push(uploadFiles[i].path);
   }
 
   await db.getDB().collection("recipe").insertOne({
     title: title,
     thumbnail: thumbnail,
+    ingredientPicture: ingredientPicture,
     category: category,
     ingredient: ingredient,
     reference: reference,

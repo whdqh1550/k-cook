@@ -22,6 +22,9 @@
                         <%= menu.ingredient %>
                     </span>
                 </p>
+
+                <img src="/<%= menu.ingredientPicture.path %>" alt="" class="gifs">
+
                 <% for(let i=0; i < menu.imgPath.length;i++){ %> <%-
                         include("includes/step-show",{description:menu.step[i],gif:menu.imgPath[i]}) %>
                         <% } %>
