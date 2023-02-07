@@ -210,5 +210,8 @@ router.post("/recipeUpload", upload.array("image"), async function (req, res) {
   });
   res.redirect("/");
 });
+router.get("/ogImage", function (req, res) {
+  res.render("forogimage");
+});
 
 module.exports = router;
