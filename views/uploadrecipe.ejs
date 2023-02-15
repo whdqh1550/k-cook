@@ -14,10 +14,9 @@
             <h1>Upload Recipe</h1>
             <section id="container">
                 <form action="/recipeUpload" method="POST" enctype="multipart/form-data">
-                    <input type="text" placeholder="title" name="title" id="title" accept=".jpeg,.jpg,.png"
-                        class="upload-item">
+                    <input type="text" placeholder="title" name="title" id="title" class="upload-item">
                     <label for="">Put thumnail image</label>
-                    <input type="file" id="image" name="image" class="upload-item">
+                    <input type="file" id="image" name="image" class="upload-item" accept=".jpeg,.jpg,.png">
                     <label for="category">Which category it falls into?</label>
                     <select name="category" id="category" class="upload-item">
                         <option value="Banchan">Banchan</option>
