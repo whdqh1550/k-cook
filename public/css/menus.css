@@ -55,3 +55,8 @@ h1 {
     grid-template-columns: repeat(1, 1fr);
   }
 }
+@media (max-width: 76rem) and (min-width: 48rem) {
+  #container ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
