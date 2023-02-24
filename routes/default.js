@@ -1,7 +1,6 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const multer = require("multer");
-const Recaptcha = require("recaptcha2");
 const db = require("../database/database");
 
 const storageConfig = multer.diskStorage({
@@ -106,28 +105,6 @@ router.post("/logIn", async function (req, res) {
   const userData = req.body;
   const enteredUserName = userData.userName;
   const enteredPassword = userData.password;
-  const recaptchaResponse = userData["g-recaptcha-response"];
-  // Verify reCAPTCHA
-  const recaptcha = new Recaptcha({
-    siteKey: "6LctRqwkAAAAAEw-TuBTasVIZKAeanmxi2Ca10-c",
-    secretKey: "6LctRqwkAAAAAKnZ3kqS-OyggnKqVqGR8y7zjUxH",
-  });
-
-  const recaptchaValid = await recaptcha
-    .verify(recaptchaResponse)
-    .catch((err) => false);
-
-  if (!recaptchaValid) {
-    req.session.inputError = {
-      hasError: true,
-      message: "reCAPTCHA verification failed",
-      username: enteredUserName,
-    };
-    req.session.save(function () {
-      return res.redirect("/logIn");
-    });
-    return;
-  }
   const exist = await db
     .getDB()
     .collection("users")

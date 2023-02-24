@@ -5,14 +5,14 @@
   <%- include("includes/head") %>
     <title>K-cook | LogIn</title>
     <link rel="stylesheet" href="css/login.css" />
-    <script src="script/recaptcha.js"></script>
+    <!-- <script src="script/recaptcha.js"></script>
     <script>
       function onLoadCallback() {
         grecaptcha.render('divRecaptcha', {
           sitekey: '6LctRqwkAAAAAEw-TuBTasVIZKAeanmxi2Ca10-c',
           callback: successCallback,
         });
-      }
+      } -->
     </script>
     <script src="https://www.google.com/recaptcha/api.js?onload=onLoadCallback&render=explicit" async defer></script>
 
@@ -39,7 +39,7 @@
                 <input type="password" placeholder="Password" id="password" name="password" />
                 <button class="btn">Log In</button>
                 <!-- <a href="/signUp" class="btn">Sign Up</a> -->
-                <div id="divRecaptcha" name="divRecaptcha" class="g-recaptcha"></div>
+                <!-- <div id="divRecaptcha" name="divRecaptcha" class="g-recaptcha"></div> -->
 
               </form>
         </div>
