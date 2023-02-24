@@ -9,6 +9,7 @@ const MongoDBStore = mongodbStore(session);
 
 const defaultRouter = require("./routes/default");
 const menuRouter = require("./routes/menu");
+const taketimeRouter = require("./routes/taketime");
 
 const app = express();
 
@@ -55,6 +56,7 @@ app.use(async function (req, res, next) {
 
 app.use("/", defaultRouter);
 app.use("/", menuRouter);
+app.use("/", taketimeRouter);
 
 app.use(function (req, res) {
   res.status(404).render("404");
