@@ -61,3 +61,8 @@ body {
     grid-template-columns: repeat(1, 1fr);
   }
 }
+@media (max-width: 76rem) {
+  #grid-container ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
