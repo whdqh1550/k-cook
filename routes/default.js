@@ -16,6 +16,10 @@ const storageConfig = multer.diskStorage({
 const upload = multer({ storage: storageConfig });
 const router = express.Router();
 
+const recaptcha = new Recaptcha({
+  siteKey: "6LctRqwkAAAAAEw-TuBTasVIZKAeanmxi2Ca10-c",
+  secretKey: "6LctRqwkAAAAAKnZ3kqS-OyggnKqVqGR8y7zjUxH",
+});
 router.get("/", function (req, res) {
   res.render("index");
 });
@@ -106,16 +110,12 @@ router.post("/logIn", async function (req, res) {
   const userData = req.body;
   const enteredUserName = userData.userName;
   const enteredPassword = userData.password;
-  const recaptchaResponse = userData["g-recaptcha-response"];
-  // Verify reCAPTCHA
-  const recaptcha = new Recaptcha({
-    siteKey: "6LctRqwkAAAAAEw-TuBTasVIZKAeanmxi2Ca10-c",
-    secretKey: "6LctRqwkAAAAAKnZ3kqS-OyggnKqVqGR8y7zjUxH",
-  });
+  const recaptchaResponse = req.body["g-recaptcha-response"];
 
+  // Verify reCAPTCHA
   const recaptchaValid = await recaptcha
-    .verify(recaptchaResponse)
-    .catch((err) => false);
+    .validate(recaptchaResponse)
+    .catch(() => false);
 
   if (!recaptchaValid) {
     req.session.inputError = {
@@ -128,6 +128,8 @@ router.post("/logIn", async function (req, res) {
     });
     return;
   }
+
+  // Find user in database by entered user name
   const exist = await db
     .getDB()
     .collection("users")
@@ -143,6 +145,8 @@ router.post("/logIn", async function (req, res) {
     });
     return;
   }
+
+  // Verify password using bcrypt
   const passwordEqual = await bcrypt.compare(enteredPassword, exist.password);
   if (!passwordEqual) {
     req.session.inputError = {
@@ -155,13 +159,16 @@ router.post("/logIn", async function (req, res) {
     });
     return;
   }
+
+  // Set session user data and redirect to home page
   req.session.user = {
     id: exist._id,
     username: exist.userName,
   };
   req.session.loggedIn = true;
-
-  res.redirect("/");
+  req.session.save(function () {
+    return res.redirect("/");
+  });
 });
 
 router.get("/contact", function (req, res) {
