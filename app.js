@@ -67,4 +67,6 @@ app.use(function (error, req, res, next) {
 
 db.connectToDb().then(function () {
   app.listen(1550);
+  app.listen(1551);
+  app.listen(1552);
 });
