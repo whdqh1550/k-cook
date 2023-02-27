@@ -1,15 +1,13 @@
 const path = require("path");
-
 const express = require("express");
 const session = require("express-session");
 const mongodbStore = require("connect-mongodb-session");
-
 const db = require("./database/database");
 const MongoDBStore = mongodbStore(session);
-
 const defaultRouter = require("./routes/default");
 const menuRouter = require("./routes/menu");
 const taketimeRouter = require("./routes/taketime");
+const spdy = require("spdy");
 
 const app = express();
 
@@ -66,7 +64,13 @@ app.use(function (error, req, res, next) {
 });
 
 db.connectToDb().then(function () {
-  app.listen(1550);
-  app.listen(1551);
-  app.listen(1552);
+  // const server = spdy.createServer({
+  //   // Set the SSL/TLS certificate and key for the server
+  //   key: fs.readFileSync('/path/to/private.key'),
+  //   cert: fs.readFileSync('/path/to/certificate.crt')
+  // }, app);
+
+  app.listen(1550, function () {
+    console.log("HTTP/2 server listening on port 1550");
+  });
 });
