@@ -64,7 +64,5 @@ app.use(function (req, res) {
 app.use(function (error, req, res, next) {
   res.render("500");
 });
-
-db.connectToDb().then(function () {
-  app.listen(1550);
-});
+app.listen(1550);
+db.connectToDb();
