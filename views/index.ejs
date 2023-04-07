@@ -3,17 +3,40 @@
 
 <head>
   <%- include("includes/head") %>
+    <script>
+      function loadCSS(href, before, media) {
+        var doc = window.document;
+        var ss = doc.createElement("link");
+        var ref = before || doc.getElementsByTagName("script")[0];
+        ss.rel = "stylesheet";
+        ss.href = href;
+        ss.media = "only x";
+        ref.parentNode.insertBefore(ss, ref);
+        setTimeout(function () {
+          ss.media = media || "all";
+        });
+        return ss;
+      }
+      // Load the specified stylesheets asynchronously
+      loadCSS("https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css");
+      loadCSS("https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Unbounded:wght@300;700&display=swap");
+      loadCSS("/css/header.css");
+      loadCSS("/css/footer.css");
+      loadCSS("/css/carousel.css");
+      loadCSS("/css/index.css");
+    </script>
     <title>k-cook</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" /> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"
       defer></script>
     <script src="script/carouseltoggle.js" defer></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2798057846705714"
       crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/carousel.css" />
-    <link rel="stylesheet" href="css/index.css" />
+    <!-- <link rel="stylesheet" href="css/carousel.css" />
+    <link rel="stylesheet" href="css/index.css" /> -->
+
 </head>
 
 <body>
