@@ -3,6 +3,28 @@
 
 <head>
   <%- include("includes/head") %>
+    <script>
+      function loadCSS(href, before, media) {
+        var doc = window.document;
+        var ss = doc.createElement("link");
+        var ref = before || doc.getElementsByTagName("script")[0];
+        ss.rel = "stylesheet";
+        ss.href = href;
+        ss.media = "only x";
+        ref.parentNode.insertBefore(ss, ref);
+        setTimeout(function () {
+          ss.media = media || "all";
+        });
+        return ss;
+      }
+      // Load the specified stylesheets asynchronously
+
+      loadCSS("https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Unbounded:wght@300;700&display=swap");
+      loadCSS("/css/header.css");
+      loadCSS("/css/footer.css");
+
+
+    </script>
     <title>K-cook | 404</title>
     <link rel="stylesheet" href="css/about.css" />
 </head>
